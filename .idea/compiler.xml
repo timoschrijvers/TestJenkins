@@ -9,8 +9,8 @@
         <module name="TestJenkins" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TestJenkins" target="1.5" />
+    <bytecodeTargetLevel target="11">
+      <module name="TestJenkins" target="1.11" />
     </bytecodeTargetLevel>
   </component>
 </project>
