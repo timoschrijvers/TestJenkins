@@ -1,12 +1,17 @@
 pipeline {
-    agent any
+    agent {
+            docker {
+                image 'maven:3-alpine'
+                args '-v /root/.m2:/root/.m2'
+            }
+        }
 
     stages {
         stage('Build') {
-            steps {
-                "c:\Program Files\Java\jdk-1.8.0_25\bin\javac" src/myfirstapp/*.java -d classes
-            }
-        }
+                    steps {
+                        sh 'mvn -B -DskipTests clean package'
+                    }
+                }
         stage('Test') {
             steps {
                 echo 'Testing..'
