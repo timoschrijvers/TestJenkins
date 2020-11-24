@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                "c:\Program Files\Java\jdk-1.8.0_25\bin\javac" src/myfirstapp/*.java -d classes
             }
         }
         stage('Test') {
