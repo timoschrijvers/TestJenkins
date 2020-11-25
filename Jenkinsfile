@@ -10,8 +10,10 @@ pipeline {
                 }
         }
         stage('Test') {
-            steps {
-                echo 'Testing..'
+            steps{
+                withMaven(maven : 'maven_3_6_3'){
+                    bat 'mvn test'
+                }
             }
         }
         stage('Deploy') {
