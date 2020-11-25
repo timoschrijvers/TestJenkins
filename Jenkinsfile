@@ -3,10 +3,12 @@ pipeline {
 
     stages {
         stage('Build') {
-                    steps {
-                        sh 'mvn -B -DskipTests clean package'
+                steps{
+                    withMaven(maven : 'maven_3_6_3'){
+                        bat 'mvn clean compile'
                     }
                 }
+        }
         stage('Test') {
             steps {
                 echo 'Testing..'
