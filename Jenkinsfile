@@ -13,6 +13,19 @@ pipeline {
             steps{
                 withMaven(maven : 'maven_3_6_3'){
                     bat 'mvn test'
+                    
+                    archive includes: 'pkg/*.gem'
+
+                    // publish html
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: 'coverage',
+                        reportFiles: 'index.html',
+                        reportName: 'RCov Report'
+                      ]
+                  }
                 }
             }
         }
