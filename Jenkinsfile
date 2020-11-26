@@ -11,20 +11,22 @@ pipeline {
         }
         stage('Test') {
             steps{
-                withMaven(maven : 'maven_3_6_3'){
-                    bat 'mvn test'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {   
+                    withMaven(maven : 'maven_3_6_3'){
+                        bat 'mvn test'
+                    }
+
+                    bat 'mvn surefire-report:report'
+
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: 'target/site',
+                        reportFiles: 'surefire-report.html',
+                        reportName: 'RCov Report'
+                   ]
                 }
-                
-                bat 'mvn surefire-report:report'
-                
-                publishHTML target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: 'target/site',
-                    reportFiles: 'surefire-report.html',
-                    reportName: 'RCov Report'
-               ]
             }
         }
         stage('Deploy') {
