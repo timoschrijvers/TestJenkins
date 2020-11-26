@@ -22,8 +22,8 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
                     keepAll: true,
-                    reportDir: 'coverage',
-                    reportFiles: 'index.html',
+                    reportDir: 'target\sure-fire-reports',
+                    reportFiles: 'TEST-MethodsTest.xml',
                     reportName: 'RCov Report'
                ]
             }
