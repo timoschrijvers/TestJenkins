@@ -129,5 +129,9 @@ public class MethodsTest {
         verifyNoMoreInteractions(serverMock);
     }
 
+    @Test
+    public void failtest(){
+        assertTrue(false);
+    }
 
 }
