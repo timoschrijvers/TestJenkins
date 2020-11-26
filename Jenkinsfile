@@ -16,17 +16,18 @@ pipeline {
                         bat 'mvn test'
                     }
 
-                    bat 'mvn surefire-report:report'
-
-                    publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: 'target/site',
-                        reportFiles: 'surefire-report.html',
-                        reportName: 'RCov Report'
-                   ]
+                    
                 }
+                bat 'mvn surefire-report:report'
+
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'target/site',
+                    reportFiles: 'surefire-report.html',
+                    reportName: 'RCov Report'
+               ]
             }
         }
         stage('Deploy') {
