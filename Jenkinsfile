@@ -22,7 +22,7 @@ pipeline {
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
                     keepAll: true,
-                    reportDir: 'target\sure-fire-reports',
+                    reportDir: 'target/sure-fire-reports',
                     reportFiles: 'TEST-MethodsTest.xml',
                     reportName: 'RCov Report'
                ]
