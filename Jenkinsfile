@@ -31,8 +31,12 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                branch 'production'
+            }
             steps {
                 echo 'Deploying....'
+                bat 'mvn exec:java'
             }
         }
     }
